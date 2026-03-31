@@ -14,12 +14,8 @@
 // log_team_name();
 
 async function get_val(name){
-    return new Promise(async function (res, rej) {
-      chrome.storage.local.get([name], async function (result) {
-          var userLocal = result[name];
-          res(userLocal);
-      });
-    });
+    const result = await chrome.storage.local.get([name]);
+    return result[name];
 }
 
 function add_expected_value(value) {
