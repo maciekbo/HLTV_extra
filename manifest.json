@@ -26,6 +26,12 @@
       "matches": [
         "https://*.hltv.org/fantasy/*"
       ]
+    },
+    {
+      "js": ["scripts/cleaner.js"],
+      "matches": [
+        "https://*.hltv.org/player/*"
+      ]
     }
   ],
   "permissions": [
