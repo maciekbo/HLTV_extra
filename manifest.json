@@ -30,12 +30,18 @@
     {
       "js": ["scripts/cleaner.js"],
       "matches": [
-        "https://*.hltv.org/player/*"
+        "https://*.hltv.org/*"
       ]
     }
   ],
   "permissions": [
     "storage",
     "declarativeNetRequest"
-  ]
+  ],
+  "web_accessible_resources": [
+  {
+    "resources": ["images/*"],
+    "matches": ["https://*.hltv.org/*"]
+  }
+]
 }

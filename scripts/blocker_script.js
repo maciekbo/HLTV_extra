@@ -55,10 +55,12 @@ async function get_val(name){
 
 const memory_ids = {
     skins: "block_skins",
+    player_photos: "block_player_photos"
 }
 
 const addresses = {
-    skins: ["||skins-cdn.hltv.org", "||hltv.org/img/static/logos/csmoney*", "||hltv.org/img/static/logos/skin*"]
+    skins: ["||skins-cdn.hltv.org", "||hltv.org/img/static/logos/csmoney*", "||hltv.org/img/static/logos/skin*"],
+    player_photos: ["||img-cdn.hltv.org/playerbodyshot*"]
 }
 
 //set defaults
