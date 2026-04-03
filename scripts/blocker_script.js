@@ -60,7 +60,7 @@ const memory_ids = {
 
 const addresses = {
     skins: ["||skins-cdn.hltv.org", "||hltv.org/img/static/logos/csmoney*", "||hltv.org/img/static/logos/skin*"],
-    player_photos: ["||img-cdn.hltv.org/playerbodyshot*"]
+    player_photos: ["||img-cdn.hltv.org/playerbodyshot*", "||hltv.org/img/static/player/blankplayer.svg"]
 }
 
 //set defaults

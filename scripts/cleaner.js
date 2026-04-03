@@ -11,7 +11,7 @@ function clear_skin_box() {
 function clear_player_photos() {
     const new_url = chrome.runtime.getURL("images/player_silhouette.png");
     document.querySelectorAll("img").forEach(image => {
-        if (image.src.includes("playerbodyshot")) image.src = new_url;
+        if (image.src.includes("playerbodyshot") || image.src.includes("blankplayer")) image.src = new_url;
     })
     document.querySelectorAll(".playerOfTheWeekBodyshotContainer").forEach(el => el.remove());
 }
