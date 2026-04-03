@@ -32,6 +32,12 @@
       "matches": [
         "https://*.hltv.org/*"
       ]
+    },
+    {
+      "js": ["scripts/pin_event_button.js"],
+      "matches": [
+        "https://*.hltv.org/events/*"
+      ]
     }
   ],
   "permissions": [

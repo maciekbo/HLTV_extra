@@ -14,8 +14,6 @@ async function get_val(name){
     return result[name];
 }
 
-set_default("role_exp_val", true);
-
 async function set_updater(name, id) {
     const checkbox = document.getElementById(id);
     checkbox.checked = await get_val(name);
@@ -25,4 +23,9 @@ async function set_updater(name, id) {
     })
 }
 
+
+set_default("role_exp_val", true);
 set_updater("role_exp_val", "role_exp_val")
+
+set_default("pin_events", true);
+set_updater("pin_events", "pin_events");
