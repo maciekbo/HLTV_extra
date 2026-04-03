@@ -22,9 +22,9 @@ function clear_player_photos_in_matchup_details() {
             mutation.addedNodes.forEach(node => {
                 if (node.nodeType === 1) {
                     if (node.classList.contains("matchup-details-player-img")) {
-                        clear_player_photos();
+                        clear_player_photos;
                     }
-                    node.querySelectorAll(".matchup-details-player-img").forEach(clear_player_photos());
+                    node.querySelectorAll(".matchup-details-player-img").forEach(clear_player_photos);
                 }
             })
         }

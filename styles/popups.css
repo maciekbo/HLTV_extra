@@ -1,0 +1,95 @@
+:root {
+    --button_text_color: #fff;
+    --button_background_color: #2d6da3;
+    --background_color: #e5e7ea;
+    --text_color: #000000;
+    --table_border_color: rgba(0, 0, 0, 0.1);
+}
+
+/* Night Mode Overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --button_text_color: #929a9e;
+        --button_background_color: #435971;
+        --background_color: #2d3844;
+        --text_color: #929a9e;
+        --table_border_color: rgba(255, 255, 255, 0.05);;
+    }
+}
+
+body {
+    width: 600px;  /* Max allowed is 800px */
+    height: 450px; /* Max allowed is 600px */
+    margin: 10px;
+    overflow-x: scroll;
+    background-color: var(--background_color);
+    color: var(--text_color)
+}
+
+.button {
+    display: inline-block;
+    margin: 0;
+    padding: 2px;
+    color: var(--button_text_color);
+    background-color: var(--button_background_color);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+    cursor: pointer;
+    border: 0;
+    transition: background-color .2s cubic-bezier(.59, .43, .99, 1);
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+}
+
+/* Hover effect specific to navigation */
+.button:hover {
+    filter: brightness(1.1);
+}
+
+.big_button {
+    font-size: 17px;
+    display: block;
+    transition: all .2s ease-in-out;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Removes double borders */
+    margin-top: 15px;
+}
+
+td {
+    padding: 12px 8px; /* Vertical breathing room */
+    border-bottom: 1px solid var(--table_border_color); /* Subtle separator */
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+/* Ensure the last row doesn't have a border */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Push the switch to the far right */
+td:last-child {
+    text-align: right;
+    width: 60px; /* Constraints the slider column */
+}
+
+/* Specific styling for the back button */
+.back_button {
+    display: inline-flex;
+    font-size: 12px;
+}
+
+/* Add a simple arrow before the text */
+.back_button::before {
+    content: "←";
+    margin-right: 6px;
+    font-size: 14px;
+}
