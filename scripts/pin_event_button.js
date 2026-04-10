@@ -42,16 +42,49 @@ async function toggle_pin_event(button) {
     console.log(pinned);
 }
 
+async function create_pin_button() {
+    const button = document.createElement("div");
+    button.addEventListener("click", async () => {toggle_pin_event(button)});
+    if (await is_pinned()) button.innerHTML = "Unpin";
+    else button.innerHTML = "Pin";
+    return button;
+}
+
 async function add_button_on_event_page() {
-    const parent = document.querySelector(".event-hub-bottom");
-    if (parent) {
-        const button = document.createElement("div");
-        button.classList.add("event-hub-link");
-        button.addEventListener("click", async () => {toggle_pin_event(button)});
-        if (await is_pinned(get_event_id)) button.innerHTML = "Unpin";
-        else button.innerHTML = "Pin";
-        parent.appendChild(button);
+
+    const main_box = document.querySelector(".event-hub-top");
+    if (!main_box) return;
+    main_box.removeAttribute("href");
+    console.log(main_box);
+    main_box.alignItems = "right";
+
+    const new_div = document.createElement("div");
+    new_div.style.position = "absolute";
+    new_div.style.display = "flex";
+    new_div.style.justifyContent = "flex-end"; 
+    new_div.style.alignItems = "center";
+    new_div.style.gap = "15px";
+    new_div.style.width = "100%";
+    new_div.style.padding = "10px";
+    new_div.style.boxSizing = "border-box";
+    new_div.style.zIndex = "10";
+    main_box.prepend(new_div);
+
+    const time_status_div = main_box.querySelector(".event-hub-indicator");
+    if (time_status_div) {
+        time_status_div.style.position = "static";
+        time_status_div.style.margin = "0";
+        new_div.appendChild(time_status_div);
     }
+
+    const pin_button = await create_pin_button();
+    new_div.prepend(pin_button);
+    pin_button.classList.add("event-hub-indicator");
+    pin_button.classList.add("event-upcoming");
+    pin_button.style.position = "static";
+    pin_button.style.cursor = "pointer";
+
+    console.log(main_box);
 }
 
 (async () => {
