@@ -38,6 +38,12 @@
       "matches": [
         "https://*.hltv.org/events/*"
       ]
+    },
+    {
+      "js": ["scripts/list_pinned_events.js"],
+      "matches": [
+        "https://*.hltv.org/"
+      ]
     }
   ],
   "permissions": [
