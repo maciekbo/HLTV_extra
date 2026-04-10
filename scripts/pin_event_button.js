@@ -10,6 +10,7 @@ function set_default(name, val) {
 }
 
 set_default("pinned_events", []);
+set_default("event_names", {})
 
 async function get_val(name){
     const result = await chrome.storage.local.get([name]);
@@ -27,19 +28,28 @@ async function is_pinned() {
     return pinned.includes(id);
 }
 
+function get_event_name() {
+    return document.querySelector("h1.event-hub-title").innerHTML;
+}
+
 async function toggle_pin_event(button) {
     let pinned = await get_val("pinned_events");
+    let names = await get_val("event_names");
     const id = get_event_id();
     const index = pinned.indexOf(id);
     if (index > -1) {
         pinned.splice(index, 1);
         button.innerHTML = "Pin";
+        delete names[id];
     } else {
         pinned.push(id);
         button.innerHTML = "Unpin";
+        names[id] = get_event_name();
     }
     chrome.storage.local.set({["pinned_events"]: pinned});
+    chrome.storage.local.set({["event_names"]: names});
     console.log(pinned);
+    console.log(names);
 }
 
 async function create_pin_button() {
