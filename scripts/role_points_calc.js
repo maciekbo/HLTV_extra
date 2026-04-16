@@ -65,27 +65,27 @@ function enhance_role_page() {
     }
 }
 
-function addClickListenerWhenReady() {
+async function addClickListenerWhenReady() {
     const booster_buttons = document.querySelectorAll(".assign-role-button");
 
-    if (booster_buttons.length > 0) {
-        booster_buttons.forEach(button => {
-            button.addEventListener("click", () => {
-                console.log("An outer role button has been clicked");
-                console.log("The inner HTML of the clicked button is: ", button.innerHTML);
-                enhance_role_page()
-            });
-        });
-    } else {
-        // If no elements are found, keep checking.
-        setTimeout(addClickListenerWhenReady, 100);
+    while (booster_buttons.length == 0) {
+        await wait(100);
+        booster_buttons = document.querySelectorAll(".assign-role-button")
     }
+
+    booster_buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            console.log("An outer role button has been clicked");
+            console.log("The inner HTML of the clicked button is: ", button.innerHTML);
+            enhance_role_page()
+        });
+    });
 }
 
 (async () => {
     if (await get_val("role_exp_val")) {
         console.log("doing role exp value")
-        addClickListenerWhenReady();
+        await addClickListenerWhenReady();
     } else {
         console.log("not doing role exp value")
     }
