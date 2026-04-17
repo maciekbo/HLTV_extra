@@ -117,6 +117,18 @@ async function get_all_values() {
         values.push(value);
     }
     console.log(values);
+
+    for (let i = 0; i < booster_buttons.length; i++) {
+        const button = booster_buttons[i];
+        const possible_old = button.querySelector(".expected-value-small");
+        if (possible_old != null) possible_old.remove();
+        const val = document.createElement("div");
+        val.style.fontWeight = "bold";
+        val.style.textAlign = "center";
+        val.classList.add("expected-value-small")
+        val.innerHTML = values[i];
+        button.appendChild(val);
+    }
 }
 
 async function add_get_all_values_button() {
