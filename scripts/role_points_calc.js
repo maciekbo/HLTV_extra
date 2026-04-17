@@ -127,11 +127,11 @@ async function add_get_all_values_button() {
         if (!button.dataset.hasListener) {
             button.dataset.hasListener = true;
             button.addEventListener("click", async () => {
-                const parent_div = (await await_elements("#fantasy-modal .mid"))[0];
+                const parent_div = (await await_elements("#fantasy-modal .left"))[0];
                 console.log(parent_div);
                 const mid_parent = document.createElement("div");
                 mid_parent.classList.add("assign-booster-component")
-                parent_div.prepend(mid_parent);
+                parent_div.appendChild(mid_parent);
                 const new_button = document.createElement("div");
                 new_button.classList.add("assign-booster-button");
                 new_button.onclick = get_all_values;
