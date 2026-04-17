@@ -131,7 +131,7 @@ async function get_all_values() {
     }
 }
 
-async function add_get_all_values_button() {
+async function add_things_on_role_popup() {
     const add_role_buttons = await await_elements(".assign-role-button");
     console.log(add_role_buttons);
 
@@ -149,6 +149,17 @@ async function add_get_all_values_button() {
                 new_button.onclick = get_all_values;
                 new_button.innerHTML = "Get expected value for all roles";
                 mid_parent.prepend(new_button);
+
+                const advanced_view_button = (await await_elements(".toggle-advanced-btn"))[0];
+                advanced_view_button.onclick = (async () => {
+                    const player_buttons = await await_elements(".booster-compact-mode-player");
+                    player_buttons.forEach(button => {
+                        button.onclick = (() => {
+                            console.log("I am clicked.");
+                            if (document.querySelector(".booster-trigger-rate")) handle_role_change();
+                        });
+                    })
+                });
             });
         }
     })
@@ -158,7 +169,7 @@ async function add_get_all_values_button() {
     if (await get_val("role_exp_val")) {
         console.log("doing role exp value")
         await addClickListenerWhenReady();
-        await add_get_all_values_button();
+        await add_things_on_role_popup();
     } else {
         console.log("not doing role exp value")
     }
